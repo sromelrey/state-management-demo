@@ -1,0 +1,335 @@
+# State Management Comparison App - Product Requirements Document
+
+## Overview
+Build a simple Next.js application that demonstrates 4 different state management approaches using identical functionality to highlight their differences:
+- React Context API
+- Zustand
+- Redux (traditional)
+- Redux Toolkit (RTK)
+
+The goal is to create a learning resource that clearly shows the implementation differences, boilerplate requirements, and trade-offs between each approach.
+
+## Core Features
+
+### 1. Shared Counter Example
+Each implementation will demonstrate the same counter functionality:
+- Display current counter value
+- Increment button (+1)
+- Decrement button (-1)
+- Reset button (back to 0)
+- Async increment button (increment after 1 second delay to show async state handling)
+- Multiple child components reading and displaying the same state
+- Multiple components that can update the state
+
+This example is simple enough to understand quickly but complex enough to show:
+- State sharing across components
+- State updates from multiple sources
+- Async action handling
+- Component re-render optimization
+
+### 2. Navigation & Layout
+- Landing page with comparison overview
+- Individual demo pages for each approach:
+  - `/demos/context` - React Context implementation
+  - `/demos/zustand` - Zustand implementation
+  - `/demos/redux` - Traditional Redux implementation
+  - `/demos/rtk` - Redux Toolkit implementation
+- Navigation between demos
+- Responsive layout using Tailwind CSS
+
+### 3. Educational Content
+- Side-by-side code comparison on landing page
+- Inline code snippets showing setup for each approach
+- Pros and cons documentation for each method
+- Performance considerations
+- When to use which approach
+
+### 4. Visual Design
+- Clean, minimal UI using Tailwind CSS and shadcn/ui
+- Consistent component structure across all demos
+- Clear visual distinction between different implementations
+- Syntax-highlighted code snippets
+- Responsive design for mobile and desktop
+
+## Technical Architecture
+
+### Tech Stack
+- **Framework**: Next.js 14+ with App Directory
+- **Language**: TypeScript for type safety
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **State Management Libraries**:
+  - zustand: ^4.5.0
+  - redux: ^5.0.0
+  - @reduxjs/toolkit: ^2.0.0
+  - react-redux: ^9.0.0
+
+### Project Structure
+```
+app/
+├── page.tsx                    # Landing/comparison page
+├── layout.tsx                  # Root layout with navigation
+├── demos/
+│   ├── context/
+│   │   ├── page.tsx           # Context demo page
+│   │   ├── CounterContext.tsx # Context provider with useReducer
+│   │   └── components/
+│   │       ├── CounterDisplay.tsx
+│   │       ├── CounterControls.tsx
+│   │       └── AsyncCounter.tsx
+│   ├── zustand/
+│   │   ├── page.tsx           # Zustand demo page
+│   │   ├── store.ts           # Zustand store definition
+│   │   └── components/
+│   │       ├── CounterDisplay.tsx
+│   │       ├── CounterControls.tsx
+│   │       └── AsyncCounter.tsx
+│   ├── redux/
+│   │   ├── page.tsx           # Redux demo page
+│   │   ├── store.ts           # Redux store setup
+│   │   ├── counterSlice.ts    # Actions and reducer
+│   │   └── components/
+│   │       ├── CounterDisplay.tsx
+│   │       ├── CounterControls.tsx
+│   │       └── AsyncCounter.tsx
+│   └── rtk/
+│       ├── page.tsx           # RTK demo page
+│       ├── store.ts           # RTK store configuration
+│       ├── counterSlice.ts    # RTK slice with createSlice
+│       └── components/
+│           ├── CounterDisplay.tsx
+│           ├── CounterControls.tsx
+│           └── AsyncCounter.tsx
+components/
+├── ui/                        # shadcn/ui components (Button, Card, etc.)
+├── Navigation.tsx             # Main navigation component
+└── CodeBlock.tsx              # Syntax-highlighted code display
+lib/
+└── utils.ts                   # Utility functions
+```
+
+## Development Roadmap
+
+### Phase 1: Project Foundation
+- Initialize Next.js project with TypeScript and Tailwind CSS
+- Install and configure shadcn/ui components (Button, Card, Tabs)
+- Install state management dependencies: zustand, redux, @reduxjs/toolkit, react-redux
+- Create base layout with navigation
+- Set up routing structure for demo pages
+- Create shared UI components (Navigation, CodeBlock)
+
+### Phase 2: React Context Implementation
+- Create CounterContext with Context API
+- Implement useReducer for state management
+- Define actions: INCREMENT, DECREMENT, RESET, INCREMENT_ASYNC
+- Create Context Provider component
+- Build CounterDisplay component (reads counter state)
+- Build CounterControls component (increment, decrement, reset buttons)
+- Build AsyncCounter component (async increment with loading state)
+- Create demo page at /demos/context
+- Add code examples showing Context setup
+- Document Context API pros/cons
+
+### Phase 3: Zustand Implementation
+- Create Zustand store with counter state
+- Implement store methods: increment, decrement, reset, incrementAsync
+- Build CounterDisplay component using Zustand selectors
+- Build CounterControls component with Zustand actions
+- Build AsyncCounter component with async action
+- Create demo page at /demos/zustand
+- Add code examples showing Zustand setup
+- Document Zustand pros/cons
+- Compare with Context implementation
+
+### Phase 4: Traditional Redux Implementation
+- Set up Redux store with createStore and combineReducers
+- Create action types constants (INCREMENT, DECREMENT, RESET, INCREMENT_ASYNC)
+- Create action creator functions
+- Implement counter reducer with switch statement
+- Set up Redux Thunk middleware for async actions
+- Wrap app with Redux Provider
+- Build CounterDisplay component using useSelector
+- Build CounterControls component using useDispatch
+- Build AsyncCounter component with thunk action
+- Create demo page at /demos/redux
+- Add code examples showing Redux boilerplate
+- Document Redux pros/cons
+- Highlight verbosity compared to other solutions
+
+### Phase 5: Redux Toolkit (RTK) Implementation
+- Set up RTK store using configureStore
+- Create counter slice with createSlice (auto-generates actions)
+- Implement reducers: increment, decrement, reset
+- Create async action with createAsyncThunk
+- Wrap app with RTK Provider
+- Build CounterDisplay component using useSelector
+- Build CounterControls component using useDispatch with RTK actions
+- Build AsyncCounter component with async thunk
+- Create demo page at /demos/rtk
+- Add code examples showing RTK simplification
+- Document RTK pros/cons
+- Compare with traditional Redux to show improvements
+
+### Phase 6: Comparison Landing Page
+- Design landing page layout with overview section
+- Create feature comparison table:
+  - Setup complexity
+  - Boilerplate amount
+  - TypeScript support
+  - DevTools availability
+  - Bundle size
+  - Learning curve
+  - Performance characteristics
+- Add interactive tabs showing code comparisons
+- Include "store setup" comparison
+- Include "component usage" comparison
+- Include "async actions" comparison
+- Add navigation cards to each demo
+- Document when to use each approach
+
+### Phase 7: Documentation & Polish
+- Add detailed inline comments in each implementation
+- Create README with:
+  - Project overview
+  - Learning objectives
+  - How to run the project
+  - Key differences between approaches
+- Improve UI/UX consistency across all demos
+- Add loading states and error handling for async operations
+- Ensure responsive design works on mobile
+- Add hover states and transitions
+- Test all functionality
+- Optimize bundle size
+- Add meta tags for SEO (if deploying)
+
+## Logical Dependency Chain
+
+1. **Foundation First**: Must have Next.js app with routing and navigation before implementing any state management
+2. **Sequential Implementation**: Implement state management solutions in order of increasing complexity:
+   - Context (simplest, built-in)
+   - Zustand (minimal external library)
+   - Redux (most boilerplate)
+   - RTK (Redux simplified)
+3. **Comparison Last**: Landing page depends on having all implementations complete
+4. **Polish Throughout**: Can refine UI and documentation after each implementation
+
+## Success Criteria
+
+### Functional Requirements
+- All four implementations produce identical user experience
+- Counter increments, decrements, and resets correctly
+- Async increment shows loading state and updates after delay
+- Multiple components share and display same state
+- Navigation works between all pages
+
+### Educational Requirements
+- Code examples are clear and well-commented
+- Differences between approaches are highlighted
+- Pros/cons are balanced and accurate
+- Learners can understand trade-offs
+
+### Technical Requirements
+- TypeScript with no type errors
+- Proper error handling for async operations
+- Responsive design works on mobile and desktop
+- Clean, maintainable code structure
+- Each implementation follows best practices for that approach
+
+## User Experience
+
+### Key User Flows
+
+1. **Learning Path**: 
+   - User lands on comparison page
+   - Reads overview of each approach
+   - Views code comparison tabs
+   - Chooses demo to explore
+   - Navigates to specific demo page
+   - Interacts with counter
+   - Views implementation code
+   - Compares with other approaches
+
+2. **Demo Interaction**:
+   - User clicks increment → counter increases by 1
+   - User clicks decrement → counter decreases by 1
+   - User clicks reset → counter returns to 0
+   - User clicks async increment → loading indicator appears → counter increases after 1 second
+   - User sees multiple components showing same counter value
+   - User observes that all implementations behave identically
+
+3. **Code Review**:
+   - User views inline code snippets
+   - User compares setup complexity
+   - User understands implementation differences
+   - User reads pros/cons
+   - User makes informed decision about which to use
+
+## Risks and Mitigations
+
+### Technical Challenges
+- **Risk**: Different implementations might behave inconsistently
+  - **Mitigation**: Test all implementations thoroughly, ensure exact same functionality
+
+- **Risk**: Code examples might be too complex or too simple
+  - **Mitigation**: Keep counter example simple but include async to show real-world patterns
+
+- **Risk**: Bundle size might be large with all state management libraries
+  - **Mitigation**: Each demo page loads its specific dependencies only, use code splitting
+
+### Scope Management
+- **Risk**: Adding too many features (like todo lists, forms, etc.)
+  - **Mitigation**: Stick to counter example, keep it simple and focused
+
+- **Risk**: Over-documenting or under-documenting
+  - **Mitigation**: Focus on key differences, link to official docs for deep dives
+
+## Appendix
+
+### Learning Objectives
+
+After using this app, developers should understand:
+
+1. **React Context**: 
+   - When to use built-in Context API
+   - How to combine Context with useReducer
+   - Limitations of Context for complex state
+
+2. **Zustand**:
+   - Minimal setup compared to Redux
+   - Simple API with hooks
+   - Good middle ground between Context and Redux
+
+3. **Redux**:
+   - Traditional Redux patterns
+   - Amount of boilerplate required
+   - When the complexity is justified
+
+4. **RTK**:
+   - How RTK simplifies Redux
+   - Modern Redux patterns
+   - When to choose RTK over traditional Redux
+
+### Performance Considerations
+
+- Context: Can cause unnecessary re-renders without optimization
+- Zustand: Optimized selectors prevent unnecessary re-renders
+- Redux: With proper selectors, minimal re-renders
+- RTK: Same as Redux but with better defaults
+
+### Bundle Size Reference
+
+- React Context: 0 KB (built-in)
+- Zustand: ~3 KB
+- Redux + React-Redux: ~12 KB
+- RTK: ~14 KB (includes Redux, React-Redux, and utilities)
+
+These sizes are minified + gzipped.
+
+## Future Enhancements (Out of Scope for v1)
+
+- Add more complex examples (todo list, form handling)
+- Add Jotai and Recoil implementations
+- Add MobX implementation
+- Performance comparison with React DevTools Profiler
+- Video tutorials for each approach
+- Deploy to Vercel with live demo
+
