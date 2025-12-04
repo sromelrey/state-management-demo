@@ -5,13 +5,54 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "useState", path: "/demos/usestate" },
-  { name: "Context", path: "/demos/context" },
-  { name: "Zustand", path: "/demos/zustand" },
-  { name: "Redux", path: "/demos/redux" },
-  { name: "RTK", path: "/demos/rtk" },
-  { name: "XState", path: "/demos/xstate" },
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "React Concepts",
+    path: "/demos/react-concepts",
+  },
+  {
+    name: "Basic Functions",
+    path: "/demos/basic-functions",
+  },
+  {
+    name: "useCallback",
+    path: "/demos/usecallback",
+  },
+  {
+    name: "useMemo",
+    path: "/demos/usememo",
+  },
+  {
+    name: "React.memo",
+    path: "/demos/react-memo",
+  },
+  {
+    name: "useState",
+    path: "/demos/usestate",
+  },
+  {
+    name: "Context",
+    path: "/demos/context",
+  },
+  {
+    name: "Zustand",
+    path: "/demos/zustand",
+  },
+  {
+    name: "Redux",
+    path: "/demos/redux",
+  },
+  {
+    name: "RTK",
+    path: "/demos/rtk",
+  },
+  {
+    name: "XState",
+    path: "/demos/xstate",
+  },
 ];
 
 export function Navigation() {

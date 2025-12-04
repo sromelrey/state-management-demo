@@ -4,58 +4,125 @@ import { Button } from "@/components/ui/button";
 
 const approaches = [
   {
+    name: "React Concepts (Keys & Virtual DOM)",
+    path: "/demos/react-concepts",
+    description:
+      "Short explanations of keys in lists and how the Virtual DOM differs from the real DOM",
+    pros: [
+      "Short, focused explanations",
+      "Concrete code examples",
+      "Connects concepts to real components",
+    ],
+    cons: ["Not a full counter implementation"],
+    bundleSize: "0 KB",
+  },
+  {
     name: "Basic Functions (No Optimization)",
     path: "/demos/basic-functions",
-    description: "Performance issues without optimization hooks - baseline comparison",
+    description:
+      "Performance issues without optimization hooks - baseline comparison",
     pros: ["Simple to write", "No additional concepts", "Good starting point"],
-    cons: ["Functions recreated on every render", "Expensive calculations run unnecessarily", "Child components re-render unnecessarily"],
+    cons: [
+      "Functions recreated on every render",
+      "Expensive calculations run unnecessarily",
+      "Child components re-render unnecessarily",
+    ],
     bundleSize: "0 KB",
   },
   {
     name: "useCallback",
     path: "/demos/usecallback",
-    description: "Memoize callback functions to prevent recreation on re-renders",
-    pros: ["Prevents function recreation", "Optimizes child components with React.memo", "Stable function references"],
-    cons: ["Adds complexity", "Easy to misuse", "Only beneficial with React.memo children"],
+    description:
+      "Memoize callback functions to prevent recreation on re-renders",
+    pros: [
+      "Prevents function recreation",
+      "Optimizes child components with React.memo",
+      "Stable function references",
+    ],
+    cons: [
+      "Adds complexity",
+      "Easy to misuse",
+      "Only beneficial with React.memo children",
+    ],
     bundleSize: "0 KB",
   },
   {
     name: "useMemo",
     path: "/demos/usememo",
-    description: "Memoize expensive calculations to avoid unnecessary recalculations",
-    pros: ["Prevents expensive recalculations", "Optimizes derived values", "Stable object/array references"],
-    cons: ["Adds complexity", "Memory overhead", "Can hurt performance if overused"],
+    description:
+      "Memoize expensive calculations to avoid unnecessary recalculations",
+    pros: [
+      "Prevents expensive recalculations",
+      "Optimizes derived values",
+      "Stable object/array references",
+    ],
+    cons: [
+      "Adds complexity",
+      "Memory overhead",
+      "Can hurt performance if overused",
+    ],
     bundleSize: "0 KB",
   },
   {
     name: "React.memo",
     path: "/demos/react-memo",
     description: "Prevent component re-renders when props haven't changed",
-    pros: ["Prevents unnecessary re-renders", "Simple to implement", "Great for expensive components"],
-    cons: ["Shallow props comparison only", "Can be bypassed by unstable props", "Memory overhead"],
+    pros: [
+      "Prevents unnecessary re-renders",
+      "Simple to implement",
+      "Great for expensive components",
+    ],
+    cons: [
+      "Shallow props comparison only",
+      "Can be bypassed by unstable props",
+      "Memory overhead",
+    ],
     bundleSize: "0 KB",
   },
   {
     name: "useState + Props",
     path: "/demos/usestate",
-    description: "Traditional React approach with local state and props drilling",
-    pros: ["Simple and straightforward", "No dependencies", "Easy to learn", "Great for local state"],
-    cons: ["Props drilling problem", "Hard to share state", "Tightly coupled components"],
+    description:
+      "Traditional React approach with local state and props drilling",
+    pros: [
+      "Simple and straightforward",
+      "No dependencies",
+      "Easy to learn",
+      "Great for local state",
+    ],
+    cons: [
+      "Props drilling problem",
+      "Hard to share state",
+      "Tightly coupled components",
+    ],
     bundleSize: "0 KB",
   },
   {
     name: "React Context",
     path: "/demos/context",
     description: "Built-in React solution using Context API with useReducer",
-    pros: ["No external dependencies", "Built into React", "Solves props drilling"],
-    cons: ["Can cause unnecessary re-renders", "Boilerplate with useReducer", "Limited dev tools"],
+    pros: [
+      "No external dependencies",
+      "Built into React",
+      "Solves props drilling",
+    ],
+    cons: [
+      "Can cause unnecessary re-renders",
+      "Boilerplate with useReducer",
+      "Limited dev tools",
+    ],
     bundleSize: "0 KB",
   },
   {
     name: "Zustand",
     path: "/demos/zustand",
     description: "Minimal state management with a simple, hook-based API",
-    pros: ["Minimal boilerplate", "Small bundle size", "Easy to learn", "No Provider needed"],
+    pros: [
+      "Minimal boilerplate",
+      "Small bundle size",
+      "Easy to learn",
+      "No Provider needed",
+    ],
     cons: ["Smaller ecosystem", "Less tooling", "Simple feature set"],
     bundleSize: "~3 KB",
   },
@@ -63,7 +130,12 @@ const approaches = [
     name: "Redux",
     path: "/demos/redux",
     description: "Traditional Redux with actions, reducers, and middleware",
-    pros: ["Mature ecosystem", "Excellent dev tools", "Predictable patterns", "Large community"],
+    pros: [
+      "Mature ecosystem",
+      "Excellent dev tools",
+      "Predictable patterns",
+      "Large community",
+    ],
     cons: ["Lots of boilerplate", "Steep learning curve", "Verbose code"],
     bundleSize: "~12 KB",
   },
@@ -71,7 +143,12 @@ const approaches = [
     name: "Redux Toolkit",
     path: "/demos/rtk",
     description: "Modern Redux with simplified API and better defaults",
-    pros: ["Less boilerplate than Redux", "Great dev tools", "Built-in best practices", "TypeScript friendly"],
+    pros: [
+      "Less boilerplate than Redux",
+      "Great dev tools",
+      "Built-in best practices",
+      "TypeScript friendly",
+    ],
     cons: ["Still more complex than simpler solutions", "Larger bundle size"],
     bundleSize: "~14 KB",
   },
@@ -79,11 +156,19 @@ const approaches = [
     name: "XState",
     path: "/demos/xstate",
     description: "State machines and statecharts for explicit state management",
-    pros: ["Impossible states are impossible", "Visual state charts", "Great for complex flows", "Built-in async handling"],
-    cons: ["Different mental model", "Steeper learning curve", "Can be overkill for simple cases"],
+    pros: [
+      "Impossible states are impossible",
+      "Visual state charts",
+      "Great for complex flows",
+      "Built-in async handling",
+    ],
+    cons: [
+      "Different mental model",
+      "Steeper learning curve",
+      "Can be overkill for simple cases",
+    ],
     bundleSize: "~7 KB",
   },
-
 ];
 
 export default function Home() {
