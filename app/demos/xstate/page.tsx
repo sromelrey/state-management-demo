@@ -60,15 +60,15 @@ export default function XStateDemo() {
   const [state, send] = useMachine(counterMachine);
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
+    <div className='space-y-6 max-w-4xl mx-auto'>
       <div>
-        <h1 className="text-3xl font-bold">XState</h1>
-        <p className="text-muted-foreground mt-2">
+        <h1 className='text-3xl font-bold'>XState</h1>
+        <p className='text-muted-foreground mt-2'>
           State machines and statecharts for managing complex application logic
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className='grid md:grid-cols-2 gap-4'>
         <CounterDisplay state={state} />
         <CounterControls send={send} state={state} />
       </div>
@@ -78,12 +78,14 @@ export default function XStateDemo() {
       <Card>
         <CardHeader>
           <CardTitle>Implementation Details</CardTitle>
-          <CardDescription>How this XState implementation works</CardDescription>
+          <CardDescription>
+            How this XState implementation works
+          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className='space-y-4'>
           <div>
-            <h3 className="font-semibold mb-2">Setup Required:</h3>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+            <h3 className='font-semibold mb-2'>Setup Required:</h3>
+            <ul className='list-disc list-inside space-y-1 text-sm text-muted-foreground'>
               <li>Install xstate and @xstate/react packages (~7 KB)</li>
               <li>Define state machine with states and transitions</li>
               <li>Define context (data) and events</li>
@@ -93,8 +95,8 @@ export default function XStateDemo() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">Pros:</h3>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+            <h3 className='font-semibold mb-2'>Pros:</h3>
+            <ul className='list-disc list-inside space-y-1 text-sm text-muted-foreground'>
               <li>Explicit state management with visual state charts</li>
               <li>Impossible states become impossible to represent</li>
               <li>Built-in async state handling (loading, success, error)</li>
@@ -106,8 +108,8 @@ export default function XStateDemo() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">Cons:</h3>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+            <h3 className='font-semibold mb-2'>Cons:</h3>
+            <ul className='list-disc list-inside space-y-1 text-sm text-muted-foreground'>
               <li>Different mental model (state machines)</li>
               <li>Steeper learning curve</li>
               <li>Can be overkill for simple state</li>
@@ -116,18 +118,22 @@ export default function XStateDemo() {
             </ul>
           </div>
 
-          <div className="bg-purple-50 dark:bg-purple-950 p-4 rounded-lg">
-            <p className="text-sm font-semibold mb-2">💡 State Machines Advantage:</p>
-            <p className="text-sm text-muted-foreground">
-              XState uses finite state machines which make your application logic explicit and
-              visual. Notice how we have "idle" and "incrementing" states? This prevents bugs
-              by making impossible states impossible - you can't be both idle and incrementing!
+          <div className='bg-purple-50 dark:bg-purple-950 p-4 rounded-lg'>
+            <p className='text-sm font-semibold mb-2'>
+              💡 State Machines Advantage:
+            </p>
+            <p className='text-sm text-muted-foreground'>
+              XState uses finite state machines which make your application
+              logic explicit and visual. Notice how we have &quot;idle&quot; and
+              &quot;incrementing&quot; states? This prevents bugs by making
+              impossible states impossible - you can&apos;t be both idle and
+              incrementing!
             </p>
           </div>
 
-          <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
-            <p className="text-sm font-semibold mb-2">📊 When to Use XState:</p>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+          <div className='bg-blue-50 dark:bg-blue-950 p-4 rounded-lg'>
+            <p className='text-sm font-semibold mb-2'>📊 When to Use XState:</p>
+            <ul className='list-disc list-inside space-y-1 text-sm text-muted-foreground'>
               <li>Complex user flows (multi-step forms, wizards)</li>
               <li>State-dependent UI (authentication flows, onboarding)</li>
               <li>When you need visual state charts for documentation</li>
@@ -135,7 +141,7 @@ export default function XStateDemo() {
             </ul>
           </div>
 
-          <CodeViewer code={DEMO_CODE} title="View Implementation" />
+          <CodeViewer code={DEMO_CODE} title='View Implementation' />
         </CardContent>
       </Card>
     </div>

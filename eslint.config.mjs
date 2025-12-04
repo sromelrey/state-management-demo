@@ -20,6 +20,15 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  // Relax some strict rules inside demo files so prose and teaching examples
+  // don't break the production build.
+  {
+    files: ["app/demos/**/*.{js,jsx,ts,tsx}"],
+    rules: {
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

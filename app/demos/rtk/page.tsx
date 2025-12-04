@@ -57,15 +57,16 @@ function CounterControls() {
 
 function RTKDemoContent() {
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
+    <div className='space-y-6 max-w-4xl mx-auto'>
       <div>
-        <h1 className="text-3xl font-bold">Redux Toolkit (RTK)</h1>
-        <p className="text-muted-foreground mt-2">
-          Modern Redux with less boilerplate using createSlice and createAsyncThunk
+        <h1 className='text-3xl font-bold'>Redux Toolkit (RTK)</h1>
+        <p className='text-muted-foreground mt-2'>
+          Modern Redux with less boilerplate using createSlice and
+          createAsyncThunk
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className='grid md:grid-cols-2 gap-4'>
         <CounterDisplay />
         <CounterControls />
       </div>
@@ -75,26 +76,32 @@ function RTKDemoContent() {
       <Card>
         <CardHeader>
           <CardTitle>Implementation Details</CardTitle>
-          <CardDescription>How this Redux Toolkit implementation works</CardDescription>
+          <CardDescription>
+            How this Redux Toolkit implementation works
+          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className='space-y-4'>
           <div>
-            <h3 className="font-semibold mb-2">Setup Required:</h3>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+            <h3 className='font-semibold mb-2'>Setup Required:</h3>
+            <ul className='list-disc list-inside space-y-1 text-sm text-muted-foreground'>
               <li>Install @reduxjs/toolkit and react-redux</li>
-              <li>Create slice with createSlice() - combines actions and reducer!</li>
+              <li>
+                Create slice with createSlice() - combines actions and reducer!
+              </li>
               <li>Use createAsyncThunk() for async actions</li>
-              <li>Configure store with configureStore() - middleware included!</li>
+              <li>
+                Configure store with configureStore() - middleware included!
+              </li>
               <li>Wrap app with Provider component</li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">Pros:</h3>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+            <h3 className='font-semibold mb-2'>Pros:</h3>
+            <ul className='list-disc list-inside space-y-1 text-sm text-muted-foreground'>
               <li>Much less boilerplate than traditional Redux</li>
               <li>Built-in best practices and sensible defaults</li>
-              <li>Immer integration for "mutable" updates</li>
+              <li>Immer integration for &quot;mutable&quot; updates</li>
               <li>Excellent TypeScript support</li>
               <li>Same great Redux DevTools</li>
               <li>createAsyncThunk simplifies async logic</li>
@@ -103,8 +110,8 @@ function RTKDemoContent() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">Cons:</h3>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+            <h3 className='font-semibold mb-2'>Cons:</h3>
+            <ul className='list-disc list-inside space-y-1 text-sm text-muted-foreground'>
               <li>Still requires Provider wrapper</li>
               <li>Larger bundle size than simpler solutions (~14 KB)</li>
               <li>More complex than Context or Zustand for simple cases</li>
@@ -112,16 +119,18 @@ function RTKDemoContent() {
             </ul>
           </div>
 
-          <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
-            <p className="text-sm font-semibold mb-2">💡 RTK vs Traditional Redux:</p>
-            <p className="text-sm text-muted-foreground">
-              Notice how RTK eliminates action type constants, action creator functions,
-              and verbose switch statements. The createSlice function combines all of these
-              into one concise definition!
+          <div className='bg-blue-50 dark:bg-blue-950 p-4 rounded-lg'>
+            <p className='text-sm font-semibold mb-2'>
+              💡 RTK vs Traditional Redux:
+            </p>
+            <p className='text-sm text-muted-foreground'>
+              Notice how RTK eliminates action type constants, action creator
+              functions, and verbose switch statements. The createSlice function
+              combines all of these into one concise definition!
             </p>
           </div>
 
-          <CodeViewer code={DEMO_CODE} title="View Implementation" />
+          <CodeViewer code={DEMO_CODE} title='View Implementation' />
         </CardContent>
       </Card>
     </div>
