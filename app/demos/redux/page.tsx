@@ -6,6 +6,56 @@ import { store } from "./store";
 import { CounterDisplay } from "./components/CounterDisplay";
 import { CounterControls } from "./components/CounterControls";
 import { AdditionalDisplay } from "./components/AdditionalDisplay";
+import { CodeViewer } from "@/components/ui/code-viewer";
+
+const DEMO_CODE = `// 1. Define action types & creators
+// store.ts
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
+
+export const increment = () => ({ type: INCREMENT });
+export const decrement = () => ({ type: DECREMENT });
+
+// 2. Create reducer
+const initialState = { count: 0, isLoading: false };
+
+function counterReducer(state = initialState, action) {
+  switch (action.type) {
+    case INCREMENT:
+      return { ...state, count: state.count + 1 };
+    case DECREMENT:
+      return { ...state, count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+// 3. Create store
+export const store = createStore(counterReducer);
+
+// 4. Wrap app with Provider
+export default function ReduxDemo() {
+  return (
+    <Provider store={store}>
+      <ReduxDemoContent />
+    </Provider>
+  );
+}
+
+// 5. Use in components
+function CounterDisplay() {
+  const count = useSelector(state => state.count);
+  return <div>Count: {count}</div>;
+}
+
+function CounterControls() {
+  const dispatch = useDispatch();
+  return (
+    <button onClick={() => dispatch(increment())}>
+      Increment
+    </button>
+  );
+}`;
 
 function ReduxDemoContent() {
   return (
@@ -42,7 +92,7 @@ function ReduxDemoContent() {
               <li>Wrap app with Provider component</li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-2">Pros:</h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
@@ -66,29 +116,7 @@ function ReduxDemoContent() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-2">Code Sample:</h3>
-            <pre className="bg-muted p-4 rounded-lg text-xs overflow-x-auto">
-{`// Action types
-const INCREMENT = 'INCREMENT';
-
-// Action creators
-const increment = () => ({ type: INCREMENT });
-
-// Reducer
-function reducer(state = { count: 0 }, action) {
-  switch (action.type) {
-    case INCREMENT:
-      return { ...state, count: state.count + 1 };
-    default:
-      return state;
-  }
-}
-
-// Usage
-dispatch(increment());`}
-            </pre>
-          </div>
+          <CodeViewer code={DEMO_CODE} title="View Implementation" />
         </CardContent>
       </Card>
     </div>

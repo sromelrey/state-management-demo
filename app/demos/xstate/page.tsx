@@ -6,6 +6,55 @@ import { counterMachine } from "./counterMachine";
 import { CounterDisplay } from "./components/CounterDisplay";
 import { CounterControls } from "./components/CounterControls";
 import { AdditionalDisplay } from "./components/AdditionalDisplay";
+import { CodeViewer } from "@/components/ui/code-viewer";
+
+const DEMO_CODE = `// 1. Define the state machine
+// counterMachine.ts
+import { createMachine, assign } from 'xstate';
+
+export const counterMachine = createMachine({
+  id: 'counter',
+  initial: 'idle',
+  context: {
+    count: 0,
+  },
+  states: {
+    idle: {
+      on: {
+        INCREMENT: {
+          actions: assign({ count: (ctx) => ctx.count + 1 }),
+        },
+        DECREMENT: {
+          actions: assign({ count: (ctx) => ctx.count - 1 }),
+        },
+        INCREMENT_ASYNC: 'incrementing',
+      },
+    },
+    incrementing: {
+      entry: assign({ count: (ctx) => ctx.count + 1 }),
+      after: {
+        1000: 'idle', // Transition to idle after 1s
+      },
+    },
+  },
+});
+
+// 2. Use in component
+export default function XStateDemo() {
+  const [state, send] = useMachine(counterMachine);
+
+  return (
+    <div>
+      <p>Count: {state.context.count}</p>
+      <p>State: {state.value}</p>
+      <button onClick={() => send({ type: 'INCREMENT' })}>+</button>
+      <button onClick={() => send({ type: 'DECREMENT' })}>-</button>
+      <button onClick={() => send({ type: 'INCREMENT_ASYNC' })}>
+        + Async
+      </button>
+    </div>
+  );
+}`;
 
 export default function XStateDemo() {
   const [state, send] = useMachine(counterMachine);
@@ -42,7 +91,7 @@ export default function XStateDemo() {
               <li>Send events to trigger state transitions</li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-2">Pros:</h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
@@ -67,36 +116,11 @@ export default function XStateDemo() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-2">Code Sample:</h3>
-            <pre className="bg-muted p-4 rounded-lg text-xs overflow-x-auto">
-{`// Define the machine
-const counterMachine = createMachine({
-  id: 'counter',
-  initial: 'idle',
-  context: { count: 0 },
-  states: {
-    idle: {
-      on: {
-        INCREMENT: {
-          actions: assign({ count: (ctx) => ctx.count + 1 })
-        }
-      }
-    }
-  }
-});
-
-// Use in component
-const [state, send] = useMachine(counterMachine);
-send({ type: 'INCREMENT' });`}
-            </pre>
-          </div>
-
           <div className="bg-purple-50 dark:bg-purple-950 p-4 rounded-lg">
             <p className="text-sm font-semibold mb-2">💡 State Machines Advantage:</p>
             <p className="text-sm text-muted-foreground">
-              XState uses finite state machines which make your application logic explicit and 
-              visual. Notice how we have "idle" and "incrementing" states? This prevents bugs 
+              XState uses finite state machines which make your application logic explicit and
+              visual. Notice how we have "idle" and "incrementing" states? This prevents bugs
               by making impossible states impossible - you can't be both idle and incrementing!
             </p>
           </div>
@@ -110,6 +134,8 @@ send({ type: 'INCREMENT' });`}
               <li>Applications with complex async state management</li>
             </ul>
           </div>
+
+          <CodeViewer code={DEMO_CODE} title="View Implementation" />
         </CardContent>
       </Card>
     </div>

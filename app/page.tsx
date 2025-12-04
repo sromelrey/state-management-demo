@@ -4,6 +4,38 @@ import { Button } from "@/components/ui/button";
 
 const approaches = [
   {
+    name: "Basic Functions (No Optimization)",
+    path: "/demos/basic-functions",
+    description: "Performance issues without optimization hooks - baseline comparison",
+    pros: ["Simple to write", "No additional concepts", "Good starting point"],
+    cons: ["Functions recreated on every render", "Expensive calculations run unnecessarily", "Child components re-render unnecessarily"],
+    bundleSize: "0 KB",
+  },
+  {
+    name: "useCallback",
+    path: "/demos/usecallback",
+    description: "Memoize callback functions to prevent recreation on re-renders",
+    pros: ["Prevents function recreation", "Optimizes child components with React.memo", "Stable function references"],
+    cons: ["Adds complexity", "Easy to misuse", "Only beneficial with React.memo children"],
+    bundleSize: "0 KB",
+  },
+  {
+    name: "useMemo",
+    path: "/demos/usememo",
+    description: "Memoize expensive calculations to avoid unnecessary recalculations",
+    pros: ["Prevents expensive recalculations", "Optimizes derived values", "Stable object/array references"],
+    cons: ["Adds complexity", "Memory overhead", "Can hurt performance if overused"],
+    bundleSize: "0 KB",
+  },
+  {
+    name: "React.memo",
+    path: "/demos/react-memo",
+    description: "Prevent component re-renders when props haven't changed",
+    pros: ["Prevents unnecessary re-renders", "Simple to implement", "Great for expensive components"],
+    cons: ["Shallow props comparison only", "Can be bypassed by unstable props", "Memory overhead"],
+    bundleSize: "0 KB",
+  },
+  {
     name: "useState + Props",
     path: "/demos/usestate",
     description: "Traditional React approach with local state and props drilling",
@@ -51,6 +83,7 @@ const approaches = [
     cons: ["Different mental model", "Steeper learning curve", "Can be overkill for simple cases"],
     bundleSize: "~7 KB",
   },
+
 ];
 
 export default function Home() {
@@ -59,9 +92,31 @@ export default function Home() {
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold">State Management Comparison</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Compare useState, React Context, Zustand, Redux, Redux Toolkit, and XState side-by-side with identical counter examples
+          Compare state management solutions (useState, Context, Zustand, Redux, RTK, XState) and performance optimization hooks (useCallback, useMemo, React.memo) with interactive demos
         </p>
       </div>
+
+
+      <Card>
+        <CardHeader>
+          <CardTitle>About This Demo</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            Each demo implements an identical counter application with the following features:
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+            <li>Increment, decrement, and reset counter</li>
+            <li>Async increment (1 second delay)</li>
+            <li>Multiple components sharing the same state</li>
+            <li>Loading states for async operations</li>
+          </ul>
+          <p className="text-sm text-muted-foreground">
+            By using identical functionality across all implementations, you can clearly see the
+            differences in setup, boilerplate, and API design.
+          </p>
+        </CardContent>
+      </Card>
 
       <div className="grid md:grid-cols-2 gap-6">
         {approaches.map((approach) => (
@@ -101,26 +156,6 @@ export default function Home() {
         ))}
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>About This Demo</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p>
-            Each demo implements an identical counter application with the following features:
-          </p>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li>Increment, decrement, and reset counter</li>
-            <li>Async increment (1 second delay)</li>
-            <li>Multiple components sharing the same state</li>
-            <li>Loading states for async operations</li>
-          </ul>
-          <p className="text-sm text-muted-foreground">
-            By using identical functionality across all implementations, you can clearly see the
-            differences in setup, boilerplate, and API design.
-          </p>
-        </CardContent>
-      </Card>
     </div>
   );
 }
